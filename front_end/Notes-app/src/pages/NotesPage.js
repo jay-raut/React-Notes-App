@@ -1,16 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import NotesList from "../components/NoteList";
 import { UserContext } from "../UserContext";
-import { Typography } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton } from "@mui/material";
 import "../App.css";
-import { Navigate } from "react-router-dom";
 export default function NotesPage() {
   const [notes, setNotes] = useState([]);
 
-  const { setUserInfo, userInfo } = useContext(UserContext);
-
+  const { userInfo } = useContext(UserContext);
   const username = userInfo?.username;
   useEffect(() => {
     if (username) {
@@ -73,8 +68,21 @@ export default function NotesPage() {
     }
   };
   return (
-    <div className="container">
-      <NotesList notes={notes} addNote={addNote} deleteNote={deleteNote} />
-    </div>
+    <>
+      {!username && (
+        <>
+          <div className="notes-page-not-signed-in">
+            <h1>Log in to view or create your notes</h1>
+          </div>
+        </>
+      )}
+      {username && (
+        <>
+          <div className="container">
+            <NotesList notes={notes} addNote={addNote} deleteNote={deleteNote} />
+          </div>
+        </>
+      )}
+    </>
   );
 }
