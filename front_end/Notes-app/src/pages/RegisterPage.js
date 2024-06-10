@@ -11,7 +11,8 @@ export default function Register() {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok){
-        alert('ok');
+        alert('User was created');
+        window.location.href = "/";
     }else{
         alert('error while creation of user')
     }
