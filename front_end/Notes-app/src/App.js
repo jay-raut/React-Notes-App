@@ -7,6 +7,7 @@ import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import { UserContextProvider } from "./UserContext";
 import SidebarNav from "./components/Sidebar";
+import NotesPage from "./pages/NotesPage";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
         <div className="containter">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/notes" element={<NotesPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

@@ -24,7 +24,7 @@ export default function Login() {
 
   }
   if (signedIn) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/notes"} />;
   }
   return (
     <form className="login" onSubmit={login_user}>
