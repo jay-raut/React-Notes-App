@@ -49,6 +49,7 @@ export default function Navbar() {
     });
     setUserInfo(null);
     handleClose();
+    window.location.reload();
   }
 
   return (
