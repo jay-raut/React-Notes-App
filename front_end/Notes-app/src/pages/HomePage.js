@@ -7,8 +7,15 @@ import { IconButton } from "@mui/material";
 import "../App.css";
 export default function HomePage() {
   const [notes, setNotes] = useState([]);
+
   const { setUserInfo, userInfo } = useContext(UserContext);
+
   const username = userInfo?.username;
+  useEffect(() => {
+    if (username) {
+      fetchNotes();
+    }
+  }, [username]);
 
   const fetchNotes = async () => {
     try {
@@ -64,9 +71,6 @@ export default function HomePage() {
       alert("Unable to delete note");
     }
   };
-  if (username){
-    fetchNotes();
-  }
 
   return (
     <div className="container">
