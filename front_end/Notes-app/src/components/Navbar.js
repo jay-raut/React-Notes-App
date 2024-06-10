@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { useContext, useEffect } from "react";
 import React from "react";
@@ -39,7 +39,7 @@ export default function Navbar() {
         setLoadedState(true);
       });
     });
-  }, []);
+  }, [setUserInfo]);
   const username = userInfo?.username;
 
   function logout() {

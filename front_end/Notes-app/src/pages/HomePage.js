@@ -1,14 +1,12 @@
-import { useState, useEffect, useContext } from "react";
-import NotesList from "../components/NoteList";
+import { useContext } from "react";
 import { UserContext } from "../UserContext";
-import { Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
 import { Button } from "@mui/material"
 
 import "../App.css";
 export default function HomePage() {
-  const { setUserInfo, userInfo } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
 
   const username = userInfo?.username;
 

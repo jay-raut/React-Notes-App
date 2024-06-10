@@ -9,15 +9,9 @@ import NotesIcon from '@mui/icons-material/Notes';
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { useState } from "react";
-import { makeStyles } from "@mui/styles";
 
 export default function SidebarNav() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const useStyles = makeStyles({
-    drawer: {
-      width: "200px",
-    },
-  });
   return (
     <>
       <IconButton
