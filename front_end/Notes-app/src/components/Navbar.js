@@ -57,7 +57,7 @@ export default function Navbar() {
       <AppBar position="static" sx={{ backgroundColor: "#333;" }}>
         <Toolbar>
           <SidebarNav></SidebarNav>
-          <Typography variant="h6" component={("div", Link)} to="/" marginLeft={3} color={'inherit'} sx={{ flexGrow: 1, textDecoration: "none" }}>
+          <Typography variant="h6" component={"div"} marginLeft={3} color={'inherit'} sx={{ flexGrow: 1, textDecoration: "none" }}>
             Notes
           </Typography>
 

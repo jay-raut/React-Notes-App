@@ -1,8 +1,13 @@
 import React from "react";
 import { Drawer, IconButton } from "@mui/material";
 import { Typography, Box } from "@mui/material";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import NotesIcon from '@mui/icons-material/Notes';
+
 import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from '@mui/icons-material/Close';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { useState } from "react";
 import { makeStyles } from "@mui/styles";
 
@@ -21,19 +26,15 @@ export default function SidebarNav() {
         edge="end"
         color="inherit"
         aria-label="open drawer"
-        onClick={() => setDrawerOpen(true)} // Open drawer on click
+        onClick={() => setDrawerOpen(true)}
         sx={{
-          color: "white", // Set the color to white
-          marginLeft: -2, // Example of additional styling
+          color: "white",
+          marginLeft: -2,
         }}>
-        <MenuIcon /> {/* Use MenuIcon instead of MenuItem */}
+        <MenuIcon />
       </IconButton>
-      <Drawer
-        anchor="left"
-        open={isDrawerOpen}
-        onClose={() => setDrawerOpen(false)} // Close drawer on click outside
-      >
-        <Box p={2} width="250px" textAlign="center" role="presentation" sx={{ position: "relative" }}>
+      <Drawer anchor="left" open={isDrawerOpen} onClose={() => setDrawerOpen(false)}>
+        <Box p={2} width="400px" textAlign="center" role="presentation" sx={{ position: "relative", padding: 0 }}>
           <IconButton
             className="sidebar-icon"
             size="large"
@@ -42,13 +43,13 @@ export default function SidebarNav() {
             aria-label="close drawer"
             onClick={() => setDrawerOpen(false)}
             sx={{
-              color: "black", // Set the color to black
+              color: "black",
               position: "absolute",
               left: 20,
               top: 6,
-              zIndex: 1001
+              zIndex: 1001,
             }}>
-            <CloseIcon /> {/* Use MenuIcon instead of MenuItem */}
+            <ChevronLeftIcon sx={{ width: "1.8rem", height: "1.8rem" }}  />
           </IconButton>
           <Typography
             variant="h6"
@@ -59,10 +60,56 @@ export default function SidebarNav() {
               right: 0,
               left: 1,
               margin: 1,
-              zIndex: 1000
+              zIndex: 1000,
             }}>
-            Side Panel
+           Notes
           </Typography>
+          <Box sx={{ marginTop: 7,textAlign: "left", borderTop:"1px solid grey", width: "100%" }}>
+            <Button
+              component={Link}
+              to="/"
+              startIcon={<HomeIcon sx={{ width: "1.8rem", height: "1.8rem" }} />} // Increase the icon size here
+              sx={{
+                color: "black",
+                justifyContent: "flex-start",
+                textTransform: "none",
+                width: "100%",
+                marginLeft: 2,
+                height: 60, // Adjust the height here
+                fontSize: "1.3rem", // Increase the text size here
+                "&:hover": {
+                  backgroundColor: "#f0f0f0", // Change background color on hover
+                },
+              }}
+              onClick={() => setDrawerOpen(false)}>
+              <Typography variant="h6" sx={{ marginLeft: "20px", fontSize: "1.4rem" }}>
+                Home
+              </Typography>
+            </Button>
+          </Box>
+          <Box sx={{ marginTop: 0,textAlign: "left", borderTop:"1px solid grey", width: "100%" }}>
+            <Button
+              component={Link}
+              to="/notes"
+              startIcon={<NotesIcon sx={{ width: "1.8rem", height: "1.8rem" }} />} // Increase the icon size here
+              sx={{
+                color: "black",
+                justifyContent: "flex-start",
+                textTransform: "none",
+                width: "100%",
+                marginLeft: 2,
+                height: 60, // Adjust the height here
+                fontSize: "1.3rem", // Increase the text size here
+                "&:hover": {
+                  backgroundColor: "#f0f0f0", // Change background color on hover
+                },
+              }}
+              onClick={() => setDrawerOpen(false)}>
+              <Typography variant="h6" sx={{ marginLeft: "20px", fontSize: "1.4rem" }}>
+                My Notes
+              </Typography>
+            </Button>
+          </Box>
         </Box>
       </Drawer>
     </>
