@@ -49,6 +49,12 @@ form .heading {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  white-space: pre-wrap;
+}
+
+.note span{
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .note-footer {
