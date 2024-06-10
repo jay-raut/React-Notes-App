@@ -1,11 +1,18 @@
 import { useState, useEffect, useContext } from "react";
 import NotesList from "../components/NoteList";
-
+import { UserContext } from "../UserContext";
+import { Typography } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { IconButton } from "@mui/material";
+import "../App.css";
 export default function HomePage() {
   const [notes, setNotes] = useState([]);
-
+  const { setUserInfo, userInfo } = useContext(UserContext);
+  const username = userInfo?.username;
   useEffect(() => {
-    fetchNotes();
+    if (username) {
+      fetchNotes();
+    }
   }, []);
 
   const fetchNotes = async () => {
@@ -56,16 +63,34 @@ export default function HomePage() {
       credentials: "include",
       body: JSON.stringify(deleteNote),
     });
-    if (response.ok){
+    if (response.ok) {
       fetchNotes();
-    }else{
+    } else {
       alert("Unable to delete note");
     }
   };
 
   return (
     <div className="container">
-      <NotesList notes={notes} addNote={addNote} deleteNote={deleteNote} />
+      {username && <NotesList notes={notes} addNote={addNote} deleteNote={deleteNote} />}
+      {!username && (
+        <>
+          <div className="splash-page">
+            <h1>Welcome to Notes </h1>
+            <p>All your notes - in the cloud.</p>
+            <p>To get started. Log in or register</p>
+            <div className="note-example">
+              <span>This is an example note. Create more like this by getting started</span>
+              <div className="note-footer">
+                <small>Created on: {new Date().toString()}</small>
+                <IconButton aria-label="delete" color="inherit" sx={{ zIndex: 1000 }}>
+                  <DeleteIcon />
+                </IconButton>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

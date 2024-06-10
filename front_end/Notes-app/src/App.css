@@ -52,6 +52,8 @@ form .heading {
   white-space: pre-wrap;
 }
 
+
+
 .note span{
   word-wrap: break-word;
   word-break: break-word;
@@ -92,3 +94,23 @@ form .heading {
   background-color: white;
   cursor: pointer;
 }
+.note-example{
+  background-color: yellow;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  white-space: pre-wrap;
+  
+}
+
+.splash-page {
+  margin-top: 50px;
+  justify-content: space-between;
+}
+
+
+
