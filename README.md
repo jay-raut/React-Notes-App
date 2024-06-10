@@ -1,2 +1,2 @@
-# Community-Social-Network
- A social network similar to reddit. Allows users to post about topics and comment on them
+# Notes App
+A React App which allows users to create notes in their own account.
