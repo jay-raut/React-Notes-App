@@ -137,4 +137,33 @@ app.post("/note", async (req, res) => {
   });
 });
 
+app.delete("/delete", async (req, res) => {
+  const { token } = req.cookies;
+  if (!token) {
+    return res.status(400).json({ message: "No token provided" });
+  }
+  web_token.verify(token, secret, {}, async (err, info) => {
+    if (err) {
+      return res.status(403).json({ message: "Invalid token" });
+    }
+    try {
+      const userDoc = await User.findById(info.id);
+      if (!userDoc) {
+        return res.status(403).json({ message: "User Id not found" });
+      }
+      const notesDoc = await Notes.findById(userDoc.notesFileId);
+      if (!notesDoc) {
+        return res.status(404).json({ message: "Notes document not found for the user" });
+      }
+
+      const { noteId } = req.body;
+      await Notes.findByIdAndUpdate(userDoc.notesFileId, { $pull: { notes: { _id: noteId } } });
+      res.status(201).json({message: `Deleted Note${noteId}`});
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching user", error });
+      throw error;
+    }
+  });
+});
+
 app.listen(4000);

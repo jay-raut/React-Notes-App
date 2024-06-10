@@ -44,9 +44,28 @@ export default function HomePage() {
     }
   };
 
+  const deleteNote = async (noteId) => {
+    const deleteNote = {
+      noteId: noteId,
+    };
+    const response = await fetch("http://localhost:4000/delete", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(deleteNote),
+    });
+    if (response.ok){
+      fetchNotes();
+    }else{
+      alert("Unable to delete note");
+    }
+  };
+
   return (
     <div className="container">
-      <NotesList notes={notes} addNote={addNote} />
+      <NotesList notes={notes} addNote={addNote} deleteNote={deleteNote} />
     </div>
   );
 }
