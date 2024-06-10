@@ -49,7 +49,7 @@ export default function Navbar() {
     });
     setUserInfo(null);
     handleClose();
-    window.location.reload();
+    window.location.href = "/";
   }
 
   return (
@@ -104,7 +104,7 @@ export default function Navbar() {
                   <Avatar /> My account
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={logout}>
+                <MenuItem onClick={logout} to ="/">
                   <ListItemIcon>
                     <Logout fontSize="small" />
                   </ListItemIcon>
