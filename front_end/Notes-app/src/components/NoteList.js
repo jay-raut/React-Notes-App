@@ -1,19 +1,6 @@
 import Note from "./Note";
 import AddNote from "./AddNote";
-const NotesList = ({ notes }) => {
-  const addNote = (noteText) => {
-    const newNote = {
-      content: noteText,
-    };
-    fetch("http://localhost:4000/note", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(newNote),
-    });
-  };
+const NotesList = ({ notes, addNote }) => {
   return (
     <div className="notes-list">
       {notes.map((notes) => (
