@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+form.login,
+form.register {
+  max-width: 400px;
+  margin: 0px auto;
+}
+
+form input {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 5px;
+  border: 0;
+  background-color: #dddd;
+  border-bottom: 1px;
+}
+
+form .heading {
+  text-align: center;
+}
+.container {
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+
+.notes-list {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minMax(250px, 1fr));
+}
+
+.note {
+  background-color: yellow;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.note.new .new-note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note.new {
+  background-color: aquamarine;
+}
+
+.note.new .new-note-textarea {
+  border: none;
+  resize: none;
+  background-color: aquamarine;
+}
+
+.note.new .new-note-textarea:focus {
+  outline: none;
+}
+
+.note.new .new-note-save {
+  border: none;
+  border-radius: 15px;
+  padding: 5px, 10px;
+}
+
+.note.new .new-note-save:hover{
+  background-color: white;
+  cursor: pointer;
+}

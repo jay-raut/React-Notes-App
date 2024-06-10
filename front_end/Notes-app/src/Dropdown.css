@@ -1,0 +1,27 @@
+
+.profile-dropdown .dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 1%;
+    margin-right: 1rem;
+  }
+  
+  .profile-dropdown .dropdown-menu {
+    background-color: #444;
+    color: white;
+    border: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-dropdown .dropdown-item {
+    color: white;
+  }
+  
+  .profile-dropdown .dropdown-item:hover {
+    background-color: #555;
+  }
+
+  .profile-dropdown:hover{
+    background-color: #444;
+  }
