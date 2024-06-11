@@ -3,7 +3,7 @@ import { UserContext } from "../UserContext";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
 import { Button } from "@mui/material"
-
+import { format } from "date-fns";
 import "../App.css";
 export default function HomePage() {
   const { userInfo } = useContext(UserContext);
@@ -27,7 +27,7 @@ export default function HomePage() {
           <div className="note-example">
             <span>This is an example note. Create more like this by getting started</span>
             <div className="note-footer">
-              <small>Created on: {new Date().toString()}</small>
+              <small>Created on: {format(new Date(), "MMMM d, yyyy h:mm a")}</small>
               <IconButton aria-label="delete" color="inherit" sx={{ zIndex: 1000 }}>
                 <DeleteIcon />
               </IconButton>
