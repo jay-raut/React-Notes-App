@@ -120,5 +120,27 @@ form .heading {
   margin-top: 50px;
 }
 
+.search-bar-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
 
+.search-bar{
+  display: flex;
+  align-items: center;
+  background-color: rgb(233, 233, 233);
+  padding: 6px;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  width: 80%; 
+  max-width: 600px; 
+  
+}
 
+.search-bar input{
+  border:none;
+  background-color: rgb(233, 233, 233);
+  outline: none;
+  width: 100%;
+}

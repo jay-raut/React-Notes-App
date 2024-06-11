@@ -2,9 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import NotesList from "../components/NoteList";
 import { UserContext } from "../UserContext";
 import "../App.css";
+import SearchBar from "../components/SearchBar";
 export default function NotesPage() {
   const [notes, setNotes] = useState([]);
-
+  const [searchBarText, setSearchBarText] = useState("");
   const { userInfo } = useContext(UserContext);
   const username = userInfo?.username;
   useEffect(() => {
@@ -67,6 +68,8 @@ export default function NotesPage() {
       alert("Unable to delete note");
     }
   };
+
+
   return (
     <>
       {!username && (
@@ -78,8 +81,9 @@ export default function NotesPage() {
       )}
       {username && (
         <>
+          <SearchBar searchNote={setSearchBarText}></SearchBar>
           <div className="container">
-            <NotesList notes={notes} addNote={addNote} deleteNote={deleteNote} />
+            <NotesList notes={notes.filter((note) => note.content.toLowerCase().includes(searchBarText))} addNote={addNote} deleteNote={deleteNote}  />
           </div>
         </>
       )}
