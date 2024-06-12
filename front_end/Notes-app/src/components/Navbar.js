@@ -52,6 +52,8 @@ export default function Navbar() {
     window.location.href = "/";
   }
 
+  
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#333;" }}>
@@ -100,7 +102,7 @@ export default function Navbar() {
                 }}
                 transformOrigin={{ horizontal: "right", vertical: "top" }}
                 anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleClose} component={"a"} href={"/account"}>
                   <Avatar /> My account
                 </MenuItem>
                 <Divider />
