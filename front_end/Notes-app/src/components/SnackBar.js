@@ -3,10 +3,10 @@ import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { useNavigate } from "react-router-dom";
 
-export default function SnackBar({ open, setOpen, message }) {
-  const navigate = useNavigate();
+
+export default function SnackBar({ open, setOpen, message , onClick, onClickText}) {
+  
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -14,15 +14,10 @@ export default function SnackBar({ open, setOpen, message }) {
     setOpen(false);
   };
 
-  const LoginClick = () => {
-    setOpen(false);
-    navigate("/login");
-  };
-
   const action = (
     <React.Fragment>
-      <Button color="secondary" size="small" onClick={LoginClick}>
-        Login
+      <Button color="secondary" size="small" onClick={onClick}>
+        {onClickText}
       </Button>
       <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
         <CloseIcon fontSize="small" />

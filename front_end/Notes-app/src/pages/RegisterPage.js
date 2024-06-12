@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SnackBar from "../components/SnackBar";
-
+import { useNavigate } from "react-router-dom";
 export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +19,13 @@ export default function Register() {
       alert("Error while creating the user");
     }
   }
+  const navigate = useNavigate();
+
+  const LoginClick = () => {
+    navigate("/login");
+    setSnackBarVisible(false);
+  };
+
 
   return (
     <div>
@@ -28,7 +35,7 @@ export default function Register() {
         <input type="password" placeholder="password" value={password} onChange={(ev) => setPassword(ev.target.value)} />
         <button>Register</button>
       </form>
-      <SnackBar open={snackBarVisible} setOpen={setSnackBarVisible} message="Account created" />
+      <SnackBar open={snackBarVisible} setOpen={setSnackBarVisible} message="Account created" onClick={LoginClick} onClickText="Login" />
     </div>
   );
 }
