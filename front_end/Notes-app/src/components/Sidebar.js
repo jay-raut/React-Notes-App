@@ -4,14 +4,19 @@ import { Typography, Box } from "@mui/material";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
-import NotesIcon from '@mui/icons-material/Notes';
+import NotesIcon from "@mui/icons-material/Notes";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { useState } from "react";
+import { UserContext } from "../UserContext";
+import { useContext, useEffect } from "react";
 
 export default function SidebarNav() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const { setUserInfo, userInfo } = useContext(UserContext);
+  const username = userInfo?.username;
+  
   return (
     <>
       <IconButton
@@ -43,7 +48,7 @@ export default function SidebarNav() {
               top: 6,
               zIndex: 1001,
             }}>
-            <ChevronLeftIcon sx={{ width: "1.8rem", height: "1.8rem" }}  />
+            <ChevronLeftIcon sx={{ width: "1.8rem", height: "1.8rem" }} />
           </IconButton>
           <Typography
             variant="h6"
@@ -56,9 +61,9 @@ export default function SidebarNav() {
               margin: 1,
               zIndex: 1000,
             }}>
-           Notes
+            Notes
           </Typography>
-          <Box sx={{ marginTop: 7,textAlign: "left", borderTop:"1px solid grey", width: "100%" }}>
+          <Box sx={{ marginTop: 7, textAlign: "left", borderTop: "1px solid grey", width: "100%" }}>
             <Button
               component={Link}
               to="/"
@@ -81,10 +86,10 @@ export default function SidebarNav() {
               </Typography>
             </Button>
           </Box>
-          <Box sx={{ marginTop: 0,textAlign: "left", borderTop:"1px solid grey", width: "100%" }}>
+          <Box sx={{ marginTop: 0, textAlign: "left", borderTop: "1px solid grey", width: "100%" }}>
             <Button
               component={Link}
-              to="/notes"
+              to={username ? "/notes" : "/login"}
               startIcon={<NotesIcon sx={{ width: "1.8rem", height: "1.8rem" }} />} // Increase the icon size here
               sx={{
                 color: "black",

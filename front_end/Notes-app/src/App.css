@@ -10,6 +10,7 @@ form.login,
 form.register {
   max-width: 400px;
   margin: 0px auto;
+
 }
 
 form input {
@@ -20,6 +21,11 @@ form input {
   border: 0;
   background-color: #dddd;
   border-bottom: 1px;
+  border-radius: 10px;
+}
+
+form button{
+  border-radius: 10px;
 }
 
 form .heading {

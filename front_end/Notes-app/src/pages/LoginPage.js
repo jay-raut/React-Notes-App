@@ -29,8 +29,8 @@ export default function Login() {
   return (
     <form className="login" onSubmit={login_user}>
       <h1 className="heading">Login</h1>
-      <input type="text" placeholder="username" value={username} onChange={(ev) => setUserName(ev.target.value)} />
-      <input type="password" placeholder="password" value={password} onChange={(ev) => setPassword(ev.target.value)} />
+      <input type="text" placeholder="username" autoComplete="username" value={username} onChange={(ev) => setUserName(ev.target.value)} />
+      <input type="password" placeholder="password" autoComplete="current-password" value={password} onChange={(ev) => setPassword(ev.target.value)} />
       <button>Login</button>
     </form>
   );
