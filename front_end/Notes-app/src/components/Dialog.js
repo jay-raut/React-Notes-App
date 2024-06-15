@@ -80,7 +80,6 @@ export function ChangeUsernameDialog({ open, onClose }) {
   );
 }
 
-
 export function ChangePasswordDialog({ open, onClose }) {
   const [newPassword, setNewPassword] = React.useState("");
   const [confirmNewPassword, setConfirmNewPassword] = React.useState("");

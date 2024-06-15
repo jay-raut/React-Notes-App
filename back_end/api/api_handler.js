@@ -219,7 +219,6 @@ app.post("/change-password", async (req, res) => {
         return res.status(404).json({ message: "User not found" });
       }
 
-      
       const passwordResult = bcrypt.compareSync(oldPassword, userDoc.password);
       if (!passwordResult) {
         return res.status(401).json({ message: "Incorrect old password" });
