@@ -10,7 +10,6 @@ form.login,
 form.register {
   max-width: 400px;
   margin: 0px auto;
-
 }
 
 form input {
@@ -24,7 +23,7 @@ form input {
   border-radius: 10px;
 }
 
-form button{
+form button {
   border-radius: 10px;
 }
 
@@ -58,9 +57,7 @@ form .heading {
   white-space: pre-wrap;
 }
 
-
-
-.note span{
+.note span {
   word-wrap: break-word;
   word-break: break-word;
 }
@@ -96,11 +93,11 @@ form .heading {
   padding: 5px, 10px;
 }
 
-.note.new .new-note-save:hover{
+.note.new .new-note-save:hover {
   background-color: white;
   cursor: pointer;
 }
-.note-example{
+.note-example {
   background-color: yellow;
   margin-bottom: 10px;
   margin-top: 35px;
@@ -111,42 +108,59 @@ form .heading {
   flex-direction: column;
   justify-content: space-between;
   white-space: pre-wrap;
-  
 }
 
 .splash-page {
   margin-top: 50px;
-  
 }
 
-.notes-page-not-signed-in h1{
+.notes-page-not-signed-in h1 {
   justify-content: center;
   font-size: 2rem;
   text-align: center;
   margin-top: 50px;
 }
 
-.search-bar-wrapper{
+.search-bar-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
-.search-bar{
+.search-bar {
   display: flex;
   align-items: center;
   background-color: rgb(233, 233, 233);
   padding: 6px;
   margin-bottom: 1.5rem;
   border-radius: 10px;
-  width: 80%; 
-  max-width: 600px; 
-  
+  width: 80%;
+  max-width: 600px;
 }
 
-.search-bar input{
-  border:none;
+.search-bar input {
+  border: none;
   background-color: rgb(233, 233, 233);
   outline: none;
   width: 100%;
 }
+
+.account-settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.account-settings .change-account-login {
+  padding: 10px;
+  position: left;
+  margin-left: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+

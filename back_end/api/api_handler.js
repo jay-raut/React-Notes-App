@@ -158,10 +158,79 @@ app.delete("/delete", async (req, res) => {
 
       const { noteId } = req.body;
       await Notes.findByIdAndUpdate(userDoc.notesFileId, { $pull: { notes: { _id: noteId } } });
-      res.status(201).json({message: `Deleted Note${noteId}`});
+      res.status(201).json({ message: `Deleted Note${noteId}` });
     } catch (error) {
       res.status(500).json({ message: "Error fetching user", error });
       throw error;
+    }
+  });
+});
+
+app.post("/change-username", async (req, res) => {
+  const { token } = req.cookies;
+
+  if (!token) {
+    return res.status(400).json({ message: "No token provided" });
+  }
+
+  web_token.verify(token, secret, {}, async (err, info) => {
+    if (err) {
+      return res.status(403).json({ message: "Invalid token" });
+    }
+
+    try {
+      const { newUsername } = req.body;
+      const updatedUserDoc = await User.findByIdAndUpdate(info.id, { username: newUsername });
+
+      // Re-sign the token with the updated username
+      web_token.sign({ username: newUsername, id: info.id }, secret, { expiresIn: "1h" }, (err, token) => {
+        if (err) {
+          throw err;
+        }
+
+        // Update the token in the response cookie
+        res.cookie("token", token).json({
+          id: updatedUserDoc._id,
+          username: newUsername,
+        });
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Error changing username", error });
+      console.error("Error changing username:", error);
+    }
+  });
+});
+
+app.post("/change-password", async (req, res) => {
+  const { token } = req.cookies;
+
+  if (!token) {
+    return res.status(400).json({ message: "No token provided" });
+  }
+
+  web_token.verify(token, secret, {}, async (err, info) => {
+    if (err) {
+      return res.status(403).json({ message: "Invalid token" });
+    }
+    try {
+      const { newPassword, oldPassword } = req.body;
+      const userDoc = await User.findById(info.id);
+      if (!userDoc) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      
+      const passwordResult = bcrypt.compareSync(oldPassword, userDoc.password);
+      if (!passwordResult) {
+        return res.status(401).json({ message: "Incorrect old password" });
+      }
+      userDoc.password = bcrypt.hashSync(newPassword, 10);
+      await userDoc.save();
+
+      res.status(200).json({ message: "Password changed successfully" });
+    } catch (error) {
+      res.status(500).json({ message: "Error changing password", error });
+      console.error("Error changing password:", error);
     }
   });
 });
