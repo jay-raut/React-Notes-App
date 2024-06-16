@@ -7,7 +7,7 @@ const secret = "123HB12EBD1BD23UYBDIiiiucbdsic";
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://cluster0.lnwvlqw.mongodb.net/Social-Network?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority&appName=Cluster0", {
-  tlsCertificateKeyFile: "./mongodb.pem",
+  tlsCertificateKeyFile: "../../Certs/mongodb.pem",
 });
 const User = require("./database-models/UserModel");
 const Notes = require("./database-models/NoteModel");
