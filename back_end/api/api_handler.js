@@ -1,13 +1,14 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const cookieparser = require("cookie-parser");
 const app = express();
 const web_token = require("jsonwebtoken");
-const secret = "123HB12EBD1BD23UYBDIiiiucbdsic";
+const secret = process.env.jwt_secret;
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://cluster0.lnwvlqw.mongodb.net/Social-Network?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority&appName=Cluster0", {
-  tlsCertificateKeyFile: "../../Certs/mongodb.pem",
+  tlsCertificateKeyFile: process.env.mongo_cert
 });
 const User = require("./database-models/UserModel");
 const Notes = require("./database-models/NoteModel");
