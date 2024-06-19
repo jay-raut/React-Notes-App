@@ -5,7 +5,7 @@ const cookieparser = require("cookie-parser");
 const app = express();
 const web_token = require("jsonwebtoken");
 const secret = process.env.jwt_secret;
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://cluster0.lnwvlqw.mongodb.net/Social-Network?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority&appName=Cluster0", {
   tlsCertificateKeyFile: process.env.mongo_cert
@@ -234,5 +234,5 @@ app.post("/change-password", async (req, res) => {
     }
   });
 });
-
+console.log('Backend is running');
 app.listen(4000);
